@@ -1,3 +1,70 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body, html {
+    height: 100%;
+    width: 100%;
+    overflow: auto; /* Permite el desplazamiento */
+}
+
+body {
+    background: linear-gradient(135deg, #F229AC, #261440, #361D59); /* Fondo degradado */
+    background-size: 200% 200%; /* Tamaño del fondo para la animación */
+    animation: wave 10s linear infinite; /* Animación de olas */
+}
+
+@keyframes wave {
+    0% {
+        background-position: 0 0; /* Posición inicial del fondo */
+    }
+    100% {
+        background-position: 100% 0; /* Movimiento final del fondo */
+    }
+}
+
+nav {
+    background: rgba(255, 255, 255, 0.8);
+    padding: 20px;
+    text-align: center;
+}
+
+nav a {
+    color: #F229AC; /* Color del texto del menú */
+    text-decoration: none;
+    margin: 0 15px;
+}
+
+nav a:hover {
+    color: #5EF2F2; /* Color al pasar el ratón */
+}
+
+.button {
+    background-color: #F25252; /* Color del botón */
+    color: white; /* Color del texto del botón */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button:hover {
+    background-color: #F229AC; /* Color del botón al pasar el ratón */
+}
+
 .card {
-    margin: 10px;
+    background-color: #361D59; /* Color de fondo de las cards */
+    color: white; /* Color del texto de las cards */
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.content {
+    padding: 20px;
+    min-height: 100vh; /* Asegura que el contenido ocupe toda la altura de la ventana */
 }

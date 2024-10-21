@@ -1,35 +1,46 @@
-const cars = [
-    {
-        title: "Volkswagen",
-        description: "La marca del auto que mas se vende de segunda mano y tiene casi 300 mil kilometros.",
-        image: "https://images.unsplash.com/photo-1642187653035-ca9cd17fdaa8?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Nnx8bG9nb3RpcG8lMjBkZSUyMHZvbGtzd2FnZW58ZW58MHx8MHx8fDA%3D",
-    },
-    {
-        title: "Fiat",
-        description: "La marca del auto chiquitito que siempre lleva parlantes mas grandes que el auto en si.",
-        image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR2UaMrM754ySbdUdUm0wzDnhgaPRzb_YflOA&s",
-    },
-    {
-        title: "Renault",
-        description: "Hicieron el Renault 12. La verdad no sé si hicieron mas autos",
-        image: "https://images1.autocasion.com/actualidad/wp-content/uploads/2016/12/Qu%C3%A9-significa-el-logo-de-Renault-0.jpg",
-    }
-];
+const searchInput = document.getElementById('searchInput');
+const searchButton = document.getElementById('searchButton');
+const clearButton = document.getElementById('clearButton');
 
-const carContainer = document.getElementById('carContainer');
+searchButton.addEventListener('click', () => {
+    const query = searchInput.value.toLowerCase();
+    const filteredMovies = data.filter(movie =>
+        movie.title.toLowerCase().includes(query) ||
+        movie.genre.toLowerCase().includes(query)
+    );
+    displayMovies(filteredMovies);
+});
 
-cars.forEach(car => {
-    const cardHTML = `
-        <div class="col-md-4">
-            <div class="card">
-                <img src="${car.image}" class="card-img-top" alt="${car.title}">
-                <div class="card-body">
-                    <h5 class="card-title">${car.title}</h5>
-                    <p class="card-text">${car.description}</p>
-                    <a href="producto.html" class="btn btn-primary">Ver más</a>
+
+clearButton.addEventListener('click', () => {
+    displayMovies(data);
+});
+
+
+function displayMovies(movies) {
+    const container = document.getElementById('carContainer');
+    container.innerHTML = '';
+
+    movies.forEach(movie => {
+        const card = `
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="${movie.image}" class="card-img-top" alt="${movie.title}">
+                    <div class="card-body">
+                        <h5 class="card-title">${movie.title}</h5>
+                        <p class="card-text">${movie.description}</p>
+                        <p class="card-text"><strong>Género:</strong> ${movie.genre}</p>
+                        <p class="card-text"><strong>Precio:</strong> $${movie.price}</p>
+                        <a href="producto.html?prod=${movie.id}" class="btn btn-primary">Ver Más</a>
+                    </div>
                 </div>
             </div>
-        </div>
-    `;
-    carContainer.innerHTML += cardHTML;
+        `;
+        container.innerHTML += card;
+    });
+}
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    displayMovies(data);
 });
